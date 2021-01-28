@@ -2,23 +2,23 @@
 #  User configuration
 # -----------------------------------------------------------------------------
 
-title:               Lsh110600
+title:                GeonKimdcu
 
 # The unique resource location of your page.
 # Set to `https://<username>.github.io` when hosting on GitHub Pages
-url:                 https://lsh110600.github.io
+url:                 https://GeonKimdcu.github.io
 
 # Set to '' when hosting a blog on GitHub Pages, ie on `//<username>.github.io`
 # Set to '/<reponame>' when using the `gh-pages` branch of a repository
 baseurl:             ""
 
 # A very short description of your page
-tagline:             Data Engineer가 되고 싶은 개발자 
+tagline:             머신러닝 인공지능 
 
 # A short description of the page, used in the sidebar and as fallback for the meta description tag.
 # Markdown enabled, but don't use more than one paragraph (enforced by `>`)
 description:         >
-  코딩 잘하고 싶다.
+  코딩 잘하고 싶다.22
 
 # This should be the same author as first entry in `_data/authors.yml`
 author:
@@ -47,10 +47,10 @@ google_fonts:        Lato
 google_analytics:    UA-92346434-1
 
 # Setting a disqus shortname will enable the comment section on pages with `comments: true` in the front matter
-disqus_shortname:    lsh110600
+disqus_shortname:    GeonKimdcu
 
 # This text will appear in the footer of every page. Markdown enabled.
-copyright:           '&copy; 2020. by lsh110600'
+copyright:           '&copy; 2020. by GeonKimdcu'
 
 # Format of the permalinks
 permalink:           pretty
