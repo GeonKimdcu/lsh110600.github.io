@@ -7,8 +7,8 @@ GeonKimdcu:
 
   # Used at the bottom of each page and at the top of the `about` layout
   # Markdown enabled, can use multiple paragraphs (enabled by `|`)
-  about:             
-    Upgrade me :) 
+  about:          |   
+    Upgrade me
 
   # This photo will be used in the about section
   picture:
@@ -32,7 +32,7 @@ GeonKimdcu:
     # spotify:         <user>/<number>
     # soundcloud:      <username>
     # lastfm:          <username>
-     instagram:       geon'_'0428
+    #instagram:       <geon'_'0428>
     # flickr:          <string@string>
     # 500px:           <username>
     # dribbble:        <username>
