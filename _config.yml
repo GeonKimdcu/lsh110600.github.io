@@ -13,17 +13,17 @@ url:                 https://geonKimdcu.github.io
 baseurl:             ""
 
 # A very short description of your page
-tagline:             머신러닝 인공지능 
+tagline:             인공지능 ML&DL 
 
 # A short description of the page, used in the sidebar and as fallback for the meta description tag.
 # Markdown enabled, but don't use more than one paragraph (enforced by `>`)
 description:         >
-  코딩 잘하고 싶다.22
+  사망년 예비개발자
 
 # This should be the same author as first entry in `_data/authors.yml`
 author:
-  name:              SangHeon Lee
-  email:             lsh110600@naver.com
+  name:              Geon Kim
+  email:             geon0599@gmail.com
 
 # Fallback image and color
 image:               /assets/img/nap.jpg
