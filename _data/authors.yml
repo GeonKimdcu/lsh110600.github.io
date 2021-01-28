@@ -58,7 +58,7 @@ GeonKimdcu:
     # stumbleupon:     <username>
     # paypal:          <username>
     email:           mailto:geon0599@gmail.com
-    rss:             https://GeonKimdcu.github.io/feed.xml
+    # rss:             https://GeonKimdcu.github.io/feed.xml
 
 # Another author
 mdo:
