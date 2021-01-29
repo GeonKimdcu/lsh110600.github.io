@@ -15,13 +15,7 @@ order: 10
 - 한국전자통신연구원(ETRI) 지능형 시스템 연구실 인턴
 
 ## SKILL
-![PYTHON](/assets/img/python-logo.png)
-![R](/assets/img/R-logo.png)
-![LINUX](/assets/img/linux-logo.png)
-![SPARK](/assets/img/spark-logo.png)
-![MYSQL](/assets/img/mysql-logo.png)
-![AWS](/assets/img/aws-logo.png)
-![GIT](/assets/img/git-logo.png)
+![SKILL](/assets/img/mySkills.jpg)
 
 
 ## 프로젝트
