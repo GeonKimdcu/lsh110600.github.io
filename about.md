@@ -14,6 +14,16 @@ order: 10
 - 대구가톨릭대학교 인공지능·빅데이터공학과 재학
 - 한국전자통신연구원(ETRI) 지능형 시스템 연구실 인턴
 
+## SKILL
+![PYTHON](/assets/img/python-logo.png)
+![R](/assets/img/R-logo.png)
+![LINUX](/assets/img/linux-logo.png)
+![SPARK](/assets/img/spark-logo.png)
+![MYSQL](/assets/img/mysql-logo.png)
+![AWS](/assets/img/aws-logo.png)
+![GIT](/assets/img/git-logo.png)
+
+
 ## 프로젝트
 
 1. 2020 빅콘테스트 데이터분석 분야 '퓨처스리그'
