@@ -13,14 +13,14 @@ comments: true
 
 **Non-stationary**(비정상성): 시간에 따라 주기의 변화가 불규칙한 신호. 즉 통계적 특성이 변하는 시계열입니다.
 
-![img](/assets/img/arcpost01.png)<br>*그림 출처:https://habr.com/en/post/436294/*
+![img](/assets/img/arcpost01.png) <br>*그림 출처:https://habr.com/en/post/436294/*
 
 <br>
 
 ## Fourier Transform
 **Fourier transform**은 임의의 입력 신호를 다양한 주파수를 갖는 주기함수들의 합으로 분해하여 표현하는 것입니다. <br>
 아래 그림의 예를 들어 설명해보겠습니다. 맨 앞의 붉은색 신호는 입력 신호이고 뒤의 파란색 신호들은 Fourier transform을 통해 얻어진 (원본 신호를 구성하는) 주기함수 성분들입니다. 각각의 주기함수 성분들은 고유의 주파수(frequency)와 강도(amplitude)를 가지고 있으며 **이들을 모두 합치면 원본 붉은색 신호**가 됩니다.
-![img](/assets/img/arcpost02.png)<br>*그림 출처: wikipedia*
+![img](/assets/img/arcpost02.png) <br>*그림 출처: wikipedia*
 
 
 **Fourier Transform**의 한계란? <br>
@@ -35,7 +35,7 @@ comments: true
 
 ## STFT
 신호를 일정한 크기의 창(window)으로 잘라내서 그 창안의 신호가 stationary signal이 될 때 각 시간 별 주파수를 알아낼 수  있는 방법입니다. <br>
-<img src="../assets/img/arcpost03.png" width="80%" height="280"><br> *그림 출처: wikipedia*
+<img src="../assets/img/arcpost03.png" width="80%" height="280"> <br> *그림 출처: wikipedia*
 
 창의 크기가 작아지면 어떤 주파수가 어떤 시간에 존재하고 있는가를 알기 편해지고, 창의 크기가 커지면 어떤 주파수가 존재하고 있는가를 알기 편해집니다. (창의 크기를 무한대라고 가정하면 창이 없는 Fourier 변환과 같게 됩니다.)<br>
 신호에 대해 STFT를 하면 3차원 시간, 주파수, 진폭 그래프가 나오게 됩니다. 하지만 STFT도 문제가 있습니다. 어느 정도의 크기로 잘라야 그 안의 신호가 stationary 해질까요? 이 문제(MultiResolution Problem)를 해결하기 위해 등장한 것이 wavelet 변환입니다.
