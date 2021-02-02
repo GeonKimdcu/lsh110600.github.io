@@ -55,12 +55,14 @@ wavelet 변환을 하게 되면 scale, translation, amplitude 축을 가진 3차
 scale은 주파수의 특성을, translation은 translation의 특성을 가집니다. scale은 축척의 의미를 가지고 있으며, wavelet 모함수를 얼마만큼 팽창(압축) 시켰는가를 나타냅니다. scale 값이 커질수록 더욱 많이 팽창시켰다는 의미이므로 저주파의 특성을 나타내고 작을수록 고주파의 특성을 나타냅니다. translation은 모함수 윈도우(wavelet이 포함된 창)의 위치를 나타낸 것입니다. 시간에 따라 창이 이동하는 것(shift)을 이야기합니다.
 
 
+<br>
+이상 Arc-Fault project의 첫 포스트를 마치도록 하겠습니다.<br>
+다음 포스트는 이러한 이론을 코드로 구현해보도록 하겠습니다.
 
+<br>
+<br>
 
 ## Reference
 1. https://ktcf.tistory.com/87
 2. https://darkpgmr.tistory.com/171
 3. https://clavez.tistory.com/54
-
-이상 Arc-Fault project의 첫 포스트를 마치도록 하겠습니다.
-다음 포스트는 이러한 이론을 코드로 구현해보도록 하겠습니다.
