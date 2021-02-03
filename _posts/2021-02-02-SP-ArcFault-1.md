@@ -26,9 +26,15 @@ pywt.cwt의 Parameters를 먼저 살펴보겠습니다. <br>
 <br>
 
 Returns 값
-- coefs: 첫 번째 axis는 scales와 일치하는 coefs 계수, 남은 axes에는 data와 shape이 일치한 계수들이 matrix 형식으로 있습니다.
-- frequencies: sampling period을 입력하면 주파수 성분이 반환됩니다.
-- (Returns 값은 아직 공부 더 필요함..)
+- coefs: 첫 번째 axis는 scales와 일치하는 coefs 계수, 남은 axes에는 data와 shape이 일치한 계수들이 matrix 형식으로 있습니다. frequencies의 값(wavelet 주파수)이 높을 수록 coefs 값도 높은 값을 가집니다.
+- frequencies: 인자 값으로 사용한 [continuous wavelet families](https://pywavelets.readthedocs.io/en/latest/ref/wavelets.html)에 맞게 해당 scale 값 별로 wavelet의 주파수가 출력됩니다. scale값이 커질수록 frequencies의 값은 작아집니다.
+- 따라서, transform하고자 하는 신호에 최적화된 scale 값을 찾는 것이 중요합니다.
+
+wavelets의 families를 확인하고 싶을 경우 `wavelist()`를 사용하면 됩니다. <br>
+저는 현재 Continous Wavelet Transform을 희망하기 때문에 아래와 같이 kind 인자 값으로 'continuous'를 설정해주면 됩니다.
+```python
+    pywt.wavelist(kind='continuous')
+```
 
 ## Python Code
 
@@ -62,8 +68,9 @@ Returns 값
 ```
 ![arcpost05](https://user-images.githubusercontent.com/48666867/106566019-0dacb980-6573-11eb-9e1d-2216fa1343ea.PNG)
 
-x축은 time을 의미하고, y축은 window size를 바꿔가며 shift하여 주파수를 나타낸 결과입니다.<br>
-처음 색이 있는 부분은 전 [포스트](https://geonkimdcu.github.io/sideproject/2021/02/01/SP-ArcFault-0/)에서 알려드린 것 처럼 scale 값이 작을 수록 고주파의 특성을 잘 나타냅니다. 따라서 scale 값이 작은 범위에서 고주파 signal이 출력되었고, scale값이 점점 커져감에 따라 저주파 signal은 약간 희미하거나 혹은 아예 잡히지 않은 것으로 볼 수 있습니다.
+x축은 time array를 의미하고, y축은 scale 값, 그리고 spectrogram에서 보이는 색상은 window size 즉, scale 값 만큼 shift하여 주파수 탐지하여 나타낸 계수 coefficient 값 입니다.<br>
+처음 색이 있는 부분은 전 [포스트](https://geonkimdcu.github.io/sideproject/2021/02/01/SP-ArcFault-0/)에서 알려드린 것 처럼 scale 값이 작을 수록 고주파의 특성을 잘 나타냅니다. 따라서 scale 값이 작은 범위에서 고주파 signal이 출력되었고, scale값이 점점 커져감에 따라 저주파 signal은 약간 희미하거나 혹은 아예 잡히지 않은 것으로 볼 수 있습니다.<br>
+결과적으로 현재 입력한 신호에 대해서 최적의 scale값은 5미만인 것으로 볼 수 있습니다.
 
 <br>
 이상 Arc-Fault project에서 사용해야할 wavelet transform에 대해 간단히 알아보았습니다. 좀 더 보완하여 Arc-Fault 데이터를 적용시켜 다음 포스트에 업로드 하도록 하겠습니다.
