@@ -156,6 +156,17 @@ plt.stem(f, amplitude_Hz)
 
 Arc2 state signal의 FFT 변환 결과입니다.<br>
 Arc2의 주파수인 4MHz와 0.8 ~ 1.1로 주었던 amplitude가 잘 나온 것을 확인할 수 있습니다.
+```python
+n = len(ext_signal_Arc2)
+f = np.linspace(0, fs/2, math.trunc(n/2))
+
+Y = np.fft.fft(ext_signal_Arc2) / n
+Y = Y[range(math.trunc(n/2))]
+amplitude_Hz = 2*abs(Y)
+
+plt.stem(f, amplitude_Hz)
+```
+![arcpost15](https://user-images.githubusercontent.com/48666867/106831328-0ef4f800-66d3-11eb-89c7-d48d655bbf78.PNG)
 
 ## Compute the Short Time Fourier Transform
 다음은 시간에 따른 주파수 성분의 변화를 파악하기 위해 STFT를 적용해보겠습니다. <br>
