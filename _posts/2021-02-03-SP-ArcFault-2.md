@@ -9,6 +9,7 @@ comments: true
 `Arc-Fault` 연구과제를 위해 개발한 코드입니다.
 
 ## Introduction
+[Github](https://github.com/GeonKimdcu/SideProject) 들어가시면 프로젝트 관련 상세 내용 및 전체 코드가 있습니다. <br><br>
 etri 동계 연구 연수생으로 활동하게 되면서 박사님 밑에서 실제 진행 중이신 연구과제를 보조하게 되었습니다. 이 프로젝트의 코드는 본 연구과제에 적용하기 위해 직접 신호처리에 대해 study하며 개발한 코드입니다. <br>
 
 이번 포스트에서는 먼저 데이터 수집 단계에 대해서 다뤄보겠습니다. <br>
