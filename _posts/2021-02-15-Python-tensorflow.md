@@ -107,6 +107,13 @@ cuda\lib 폴더 안의 모든 파일은 => C:\Program Files\NVIDIA GPU Computing
 ![post15](https://user-images.githubusercontent.com/48666867/107913626-1f935100-6fa4-11eb-8467-a956ecbbdbd4.PNG)
 ![post16](https://user-images.githubusercontent.com/48666867/107913646-25893200-6fa4-11eb-9718-df09335a44c0.PNG)
 
+## Error
+아래와 같이 에러가 났을 때 해결방안입니다.
+![post17](https://user-images.githubusercontent.com/48666867/107922690-b9162f00-6fb3-11eb-87e0-9f789872ee06.jpg)
+
+1. Move to `C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.2\bin`
+2. Rename file `cusolver64_11.dll`  To  `cusolver64_10.dll`
+
 <br><br>
 ## Reference
 1. https://teddylee777.github.io/colab/tensorflow-gpu-install-windows
