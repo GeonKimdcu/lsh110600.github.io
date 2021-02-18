@@ -1,7 +1,7 @@
 ---
 layout: post
 title: '[ArcFault] Project step01: Data Collection'
-subtitle: 'wavelet transform'
+subtitle: 'data collection'
 categories: sideproject
 tags: side5
 comments: true
