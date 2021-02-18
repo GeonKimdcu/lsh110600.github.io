@@ -96,16 +96,74 @@ arc_pca = pca.transform(arc_scale)
 print(arc_pca.shape)
 ```
 
-`explained_variance_ratio_`는 pca의 각 주성분이 축소 전 데이터의 설명력을 의미합니다. 즉 1개의 각 주성분이 함축하고 있는 데이터를 의미합니다. 이를 `cumsum()`하여 주성분 개수마다 축소 전 데이터의 어느정도를 설명할 수 있는지(얼마나 덜 손실되었는지)를 알 수 있습니다.
+`explained_variance_ratio_`는 pca의 각 주성분이 축소 전 데이터의 설명력을 의미합니다. 즉 1개의 각 주성분이 함축하고 있는 데이터를 의미합니다. 이를 `cumsum()`하여 주성분 개수마다 축소 전 데이터의 어느 정도를 설명할 수 있는지(얼마나 덜 손실되었는지)를 알 수 있습니다.
 ```python
 # PCA 주성분분석
 pd.Series(np.cumsum(pca.explained_variance_ratio_))
 ```
-```0   0.86267
-1   0.92197
-dtype: float64
+**출력 결과** <br>
+> 0　　0.86267 <br>
+> 1　　0.92197
+
+출력 결과를 보아 첫 번째 주성분은 원 데이터의 86%를 설명할 수 있으며, 두 개의 주성분을 가졌을 땐 92%의 설명력을 가진다고 할 수 있습니다.
+
+그 후 두 개의 주성분을 사용하여 차원 축소된 데이터와 라벨을 합쳐 데이터프레임을 생성해줍니다.
+
+## Imbalanced Classes
+실제 아크 상태와 정상 상태의 클래스 분포 비율은 정상 상태가 압도적으로 많습니다. 즉 클래스 분포가 불균형적입니다. 
+
+예를 들어 설명해보겠습니다. 암 환자를 분석한다고 했을 경우 암에 걸린 환자와 암에 걸리지 않은 환자의 클래스 분포 비율은 당연 암에 걸리지 않은 환자의 비율이 훨씬 많을 것 입니다. 따라서 이러한 클래스의 불균형을 해소해주어야 합니다.
+
+먼저 target variable 분포를 확인해보겠습니다.
+```python
+from collections import Counter
+
+Counter(arc_pca.label)
+```
+**출력 결과** <br>
+> Counter({0: 20, 1: 40})
+
+현재 적은 양의 데이터로 진행하기 때문에 이 정도의 불균형은 크게 문제가 되지 않으나, 실제 데이터 수집을 하고 나서는 불균형하기 때문에 이를 SMOTE 기법을 이용하여 Oversampling 해주겠습니다.
+
+```python
+from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.1, random_state = 0)
+
+# 기존의 X_train, y_train, X_test, y_test의 형태확인
+print("Number transactions X_train dataset: ", X_train.shape)
+print("Number transactions y_train dataset: ", y_train.shape)
+print("Number transactions X_test dataset: ", X_test.shape)
+print("Number transactions y_test dataset: ", y_test.shape)
 ```
 
+형태를 확인했으니 이제 Oversampling 해주겠습니다.
+
+```python
+from imblearn.over_sampling import SMOTE
+print("Before OverSampling, counts of label '1': {}".format(sum(y_train == 1)))
+print("Before OverSampling, counts of label '0': {}".format(sum(y_train == 0)))
+
+sm = SMOTE(random_state = 42, sampling_strategy = 'auto') # SMOTE 알고리즘, 비율 증가
+X_train_res, y_train_res = sm.fit_sample(X_train, y_train.ravel()) # Over Sampling 진행
+
+print("After OverSampling, counts of label '1': {}".format(sum(y_train_res == 1)))
+print("After OverSampling, counts of label '0': {}".format(sum(y_train_res == 0)))
+```
+
+Oversampling 적용 후 label '1'과 '0'의 개수가 같아진 것을 확인 할 수 있습니다.
+
+train set의 형태가 어떻게 바뀌었는지 확인해보겠습니다.
+
+```python
+print("Before OverSampling, the shape of X_train: {}".format(X_train.shape)) # SMOTE 적용 이전 데이터 형태
+print("Before OverSampling, the shape of y_train: {}".format(y_train.shape)) # SMOTE 적용 이전 데이터 형태
+print("After OverSampling, the shape of X_train: {}".format(X_train_res.shape)) # SMOTE 적용 결과 확인
+print("After OverSampling, the shape of y_train: {}".format(y_train_res.shape)) # SMOTE 적용 결과 확인
+```
+
+## SVM(Support Vector Machine)
+[SVM(Support Vector Machine)](https://ko.wikipedia.org/wiki/%EC%84%9C%ED%8F%AC%ED%8A%B8_%EB%B2%A1%ED%84%B0_%EB%A8%B8%EC%8B%A0)이란 주어진 데이터가 어느 카테고리에 속할지 판단하는 이진 선형 분류 모델입니다.
 
 
 
