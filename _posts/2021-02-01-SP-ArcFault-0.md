@@ -3,7 +3,7 @@ layout: post
 title: '[ArcFault] Learn the basics Part01: Signal Transform'
 subtitle: 'signal transform'
 categories: sideproject
-tags: side5
+tags: arcfault
 comments: true
 ---
 `Arc-Fault` 연구과제를 위해 공부한 내용을 정리합니다.
