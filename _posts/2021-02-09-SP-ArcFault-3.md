@@ -3,7 +3,7 @@ layout: post
 title: '[ArcFault] Project step02: Data Analysis'
 subtitle: 'data analysis'
 categories: sideproject
-tags: side5
+tags: arcfault
 comments: true
 ---
 `Arc-Fault` 연구과제를 위해 개발한 코드입니다.
