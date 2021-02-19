@@ -165,7 +165,149 @@ print("After OverSampling, the shape of y_train: {}".format(y_train_res.shape)) 
 ## SVM(Support Vector Machine)
 [SVM(Support Vector Machine)](https://ko.wikipedia.org/wiki/%EC%84%9C%ED%8F%AC%ED%8A%B8_%EB%B2%A1%ED%84%B0_%EB%A8%B8%EC%8B%A0)이란 주어진 데이터가 어느 카테고리에 속할지 판단하는 이진 선형 분류 모델입니다.
 
+먼저 features와 target 변수를 설정해줍니다.
+```python
+features = X_train_res
+target = y_train_res
+```
 
+다음으로 SVM 모델을 생성 후 학습을 시켜보겠습니다.
+```python
+from sklearn.svm import SVC
+from sklearn import svm, metrics
+import numpy as np
+import matplotlib.pyplot as plt
+
+svc = SVC(kernel = 'linear', class_weight = 'balanced', C = 1.0, random_state = 0)
+model = svc.fit(features, target) # SVM 모델 학습
+```
+
+다음은 혼동 행렬을 출력해보겠습니다.
+```python
+from sklearn.metrics import confusion_matrix
+y_pred = svc.predict(features)
+confusion_matrix(target, y_pred)
+```
+
+## kernel SVM 적합 및 비교
+다음으로 kernel 별 적합한 SVM 모델을 찾아보겠습니다. <BR>
+- `LinearSVC`, `radial basis function`, `polynomial kernel` 이 있습니다.
+
+우선 시각화 함수를 생성해보겠습니다.
+```python
+def make_meshgrid(x, y, h = .02):
+    x_min, x_max = x.min()-1, x.max() + 1
+    y_min, y_max = y.min()-1, y.max() + 1
+    xx, yy = np.meshgrid(np.arange(x_min, x_max, h),
+                        np.arange(y_min, y_max, h))
+    return xx, yy
+
+def plot_contours(ax, clf, xx, yy, **params):
+    Z = clf.predict(np.c_[xx.ravel(), yy.ravel()])
+    Z = Z.reshape(xx.shape)
+    out = ax.contourf(xx, yy, Z, **params)
+    return out
+```
+
+다음으로 모델을 정의하고 학습을 시켜줍니다.
+```python
+C = 1.0 # Regularization parameter
+models = (svm.SVC(kernel = 'linear', C=C),
+         svm.LinearSVC(C=C, max_iter = 10000),
+         svm.SVC(kernel = 'rbf', gamma = 0.7, C=C),
+         svm.SVC(kernel = 'poly', degree = 3, gamma = 'auto', C=C))
+models = (clf.fit(X, y) for clf in models)
+```
+
+이제 kernel 별 어떻게 분류가 되는지 시각화하여 나타내보겠습니다.
+```python
+titles = ('SVC with linear kernel',
+         'LinearSVC (linear kernel)',
+         'SVC with RBF kernel',
+         'SVC with polynomial (degree 3) kernel')
+
+fig, sub = plt.subplots(2,2)
+plt.subplots_adjust(wspace = 0.4, hspace = 0.4)
+
+X0, X1 = X[:, 0], X[:, 1]
+xx, yy = make_meshgrid(X0, X1)
+
+for clf, title, ax in zip(models, titles, sub.flatten()):
+    plot_contours(ax, clf, xx, yy, cmap = plt.cm.coolwarm, alpha = 0.8)
+    ax.scatter(X0, X1, c = y, cmap=plt.cm.coolwarm, s = 20, edgecolors = 'k')
+    ax.set_xlim(xx.min(), xx.max())
+    #ax_set_ylim(yy.min(), yy.max())
+    ax.set_xlabel('Sepal length')
+    ax.set_ylabel('Sepal width')
+    ax.set_yticks(())
+    ax.set_xticks(())
+    ax.set_title(title)
+
+plt.show()
+```
+
+![arcpost17](https://user-images.githubusercontent.com/48666867/108459616-5629de00-72ba-11eb-8748-837fc27df4ec.PNG)
+
+시각화 결과를 보면 데이터 개수가 적어 대부분 잘 분류되는 것을 확인할 수 있습니다. 그리고 아크 상태(Arc1, Arc2)와 normal 상태가 잘 분류되는 것을 볼 수 있습니다.
+<br><br>
+
+## GridSearch
+
+다음으로 Hyperparameter optimizationd의 방법 중 하나인 [GridSearch](https://en.wikipedia.org/wiki/Hyperparameter_optimization#Grid_search)를 통해 최적의 파라미터 값을 탐색해보겠습니다. 
+
+먼저 그리스 서치 매개변수를 설정해준 후, 그리드 서치를 수행하고 테스트 데이터의 accuracy를 확인해보겠습니다.
+
+```python
+from sklearn import svm, metrics, model_selection
+from sklearn.model_selection import GridSearchCV
+
+print("학습 데이터의 수 =", len(target))
+
+# 그리드 서치 매개변수 설정
+params = [
+    {"C" : [1, 10, 100, 1000], "kernel" : ["linear"]},
+    {"C" : [1, 10, 100, 1000], "kernel" : ["rbf"], "gamma":[0.001, 0.0001]}
+]
+
+# 그리드 서치 수행
+clf = GridSearchCV(svm.SVC(), params, n_jobs = -1)
+clf.fit(features, target)
+print("학습기 =", clf.best_estimator_)
+
+# 테스트 데이터 확인하기
+pre = clf.predict(X_test)
+ac_score = metrics.accuracy_score(pre, y_test)
+print("정답률 =", ac_score)
+```
+출력 결과로 학습 데이터의 수, 모델의 accuracy, 학습기에는 가장 최적의 파라미터 값이 나옵니다.
+
+모델 성능도 한 번 살펴보겠습니다.
+```python
+svc = SVC(kernel = 'linear', class_weight = 'balanced', C = 1.0, random_state = 0)
+model = svc.fit(features, target)
+
+pre = clf.predict(X_test)
+
+ac_score = metrics.accuracy_score(y_test, pre)
+cl_report = metrics.classification_report(y_test, pre)
+print("정답률 = ",ac_score)
+print("리포트 =\n", cl_report)
+```
+
+Class를 예측하고자 하는 경우엔 shape을 맞춰 값을 할당한 후 predict해주면 됩니다.
+
+```python
+new_observation = [[1, -0.2]]
+svc.predict(new_observation)
+```
+<br>
+이상으로 Arc-Fault 데이터 분석 후 분류 모델 생성까지 마쳤습니다.
+
+다음으로 시계열 데이터를 통해 arc 상태를 탐지해보는 시간을 가져보겠습니다.
+
+감사합니다 :)
+
+<br><br>
 
 ## Reference
 1. https://bkshin.tistory.com/entry/DATA-20-%EB%8B%A4%EC%A4%91%EA%B3%B5%EC%84%A0%EC%84%B1%EA%B3%BC-VIF
