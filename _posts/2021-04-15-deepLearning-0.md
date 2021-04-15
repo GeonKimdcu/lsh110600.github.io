@@ -8,7 +8,7 @@ comments: true
 ---
 `케라스 창시자에게 배우는 딥러닝`을 기반으로 공부한 내용을 정리합니다.
 
-![img](/assets/img/dlcourse/book.jpeg)
+<img src="/assets/img/dlcourse/book.jpeg" width="300" height="300">
 
 ## 2.1 신경망과의 첫 만남
 먼저 딥러닝계의 "hello wrold"라고 할 수 있는 MNIST를 사용하여 신경망에 대해 알아보겠습니다.
