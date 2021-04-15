@@ -1,6 +1,6 @@
 ---
 layout: post
-title: '[DeepLearning] CH02. 신경망의 수학적 구성 요소'
+title: '[DeepLearning] CH02. 신경망의 수학적 구성 요소(1)'
 subtitle: 'deepLearning start'
 categories: deeplearning
 tags: deeplearning
