@@ -58,7 +58,7 @@ one_hot_test_labels = to_one_hot(test_labels)
 ```
 사실 케라스에는 범주형 데이터를 인코딩해주는 내장 함수가 있습니다.
 ```python
-from keras.utils.np.utils import to_categorical
+from keras.utils.np_utils import to_categorical
 
 one_hot_train_labels = to_categorical(train_labels)
 one_hot_test_labels = to_categorical(test_labels)
@@ -140,8 +140,8 @@ plt.show()
 # code 3-20 훈련과 검증 정확도 그리기
 plt.clf() # 그래프 초기화
 
-acc = history.history['acc']
-val_acc = history.history['val_loss']
+acc = history.history['accuracy']
+val_acc = history.history['val_accuracy']
 
 plt.plot(epochs, acc, 'bo', label = 'Training acc')
 plt.plot(epochs, val_acc, 'b', label='Validation acc')
