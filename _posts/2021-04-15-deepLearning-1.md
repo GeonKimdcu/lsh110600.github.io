@@ -97,6 +97,8 @@ import matplotlib.pyplot as plt
 plt.imshow(digit, cmap=plt.cm.binary)
 plt.show()
 ```
+데이터 셋에 있는 다섯 번째 샘플
+<img src="/assets/img/dlcourse/nine.jpeg" width="300" height="300">
 
 ### 2.2.6 넘파이로 텐서 조작하기
 배열에 있는 특정 원소들을 선택하는 것을 **슬라이싱**(slicing)이라고 합니다.
@@ -108,8 +110,6 @@ plt.show()
 >>> print(my_slice.shape)
 (90, 28, 28)
 ```
-데이터 셋에 있는 다섯 번째 샘플
-<img src="/assets/img/dlcourse/nine.jpeg" width="300" height="300">
 
 이미지의 오른쪽 아래 14 * 14픽셀을 선택할 수도 있습니다.
 ```python
