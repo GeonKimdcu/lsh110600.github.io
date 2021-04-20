@@ -137,7 +137,8 @@ def naive_matrix_dot(x, y):
 
 ### 2.3.4 텐서 크기 변환(tensor reshaping)
 신경망에 주입할 숫자 데이터를 전처리할 때 사용할 수 있습니다.
-`train_images = train_images.reshape((60000, 28 * 28))`
+
+`train_images = train_images.reshape((60000, 28 * 28))` <br>
 텐서의 크기를 변환한다는 것은 특정 크기에 맞게 열과 행을 재배열한다는 뜻입니다. 당연히 크기가 변환된 텐서는 원래 텐서와 원소 개수가 동일합니다.
 
 ```python
