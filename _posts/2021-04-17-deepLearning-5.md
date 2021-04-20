@@ -108,7 +108,7 @@ Dense 층에 전달한 매개변수(16)는 **은닉 유닛**(hidden unit)의 개
 
 16개의 hidden unit이 있다는 것은 가중치 행렬 W의 크기가 (input_dimension, 16)이라는 뜻입니다. Input data와 W를 점곱하면 Input data가 16차원으로 표현된 공간으로 투영됩니다. (그리고 편향 벡터 b를 더하고 relu 연산을 적용합니다). 
 
-> hidden unit을 늘리면(표현 고간을 더 고차원으로 만들면) 신경망이 더욱 복잡한 표현을 학습할 수 있지만 계산 비용이 커지고 원하지 않는 패턴을 학습할 수도 있습니다 (훈련 데이터에서는 성능이 향상되지만 테스트 데이터에서는 그렇지 않은 패턴).
+> hidden unit을 늘리면(표현 공간을 더 고차원으로 만들면) 신경망이 더욱 복잡한 표현을 학습할 수 있지만 계산 비용이 커지고 원하지 않는 패턴을 학습할 수도 있습니다 (훈련 데이터에서는 성능이 향상되지만 테스트 데이터에서는 그렇지 않은 패턴).
 
 Dense 층을 쌓을 때 두 가지 중요한 구조상의 결정이 필요합니다.
 1. 얼마나 많은 층을 사용할 것인가?
@@ -211,7 +211,7 @@ history 객체는 훈련하는 동안 발생한 모든 정보를 담고 있는 �
 ```python
 >>> history_dict = history.history
 >>> history_dict.keys()
-[u'acc', u'loss', u'val_acc', u'val_loss']
+[u'accuracy', u'loss', u'val_accuracy', u'val_loss']
 ```
 
 다음으로 train과 validation 데이터에 대한 손실과 정확도를 그려보겠습니다.
@@ -242,8 +242,8 @@ plt.show()
 ```python
 # code 3-10 훈련과 검증 정확도 그리기
 plt.clf() # 그래프 초기화
-acc = history_dict['acc']
-val_acc = history_dict['val_acc']
+acc = history_dict['accuracy']
+val_acc = history_dict['val_accuracy']
 
 plt.plot(epochs, acc, 'bo', label = 'Training acc')
 plt.plot(epochs, val_acc, 'b', label = 'Validation acc')
@@ -342,7 +342,7 @@ array([[0.98006207]
 - 이진 분류 문제(output class가 2개)에서 네트워크는 하나의 유닛과 sigmoid 활성화 함수를 가진 Dense 층으로 끝나야 합니다. 이 신경망의 출력은 확률을 나타내는 0 ~ 1 사이의 스칼라 값입니다.
 - 이진 분류 문제에서 스칼라 시그모이드 출력에 대해 사용할 손실 함수는 binary_crossentropy입니다.
 - rmsprop 옵티마이저는 문제에 상관없이 일반적으로 자주 쓰입니다.
-- 훈련 데이터에 대해 성능이 향상됨에 따라 신경망은 overfitting되기 시작하고 이전에 본적 없ㅂ는 데이터에서는 결과가 점점 나빠지게 됩니다. 항상 훈련 세트 이외의 데이터에서 성능을 모니터링해야 합니다.
+- 훈련 데이터에 대해 성능이 향상됨에 따라 신경망은 overfitting되기 시작하고 이전에 본적 없는 데이터에서는 결과가 점점 나빠지게 됩니다. 항상 훈련 세트 이외의 데이터에서 성능을 모니터링해야 합니다.
 
 
 <br><br>
