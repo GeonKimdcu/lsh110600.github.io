@@ -11,7 +11,7 @@ comments: true
 <img src="/assets/img/dlcourse/book.jpeg" width="200" height="200">
 
 ## 2.1 신경망과의 첫 만남
-먼저 딥러닝계의 "hello wrold"라고 할 수 있는 MNIST를 사용하여 신경망에 대해 알아보겠습니다.
+먼저 딥러닝계의 "hello world"라고 할 수 있는 MNIST를 사용하여 신경망에 대해 알아보겠습니다.
 
 [MNIST 데이터베이스](https://ko.wikipedia.org/wiki/MNIST_%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4) (Modified National Institute of Standards and Technology database)는 손으로 쓴 숫자들로 이루어진 대형 데이터베이스이며, 다양한 화상 처리 시스템을 트레이닝하기 위해 일반적으로 사용됩니다.  <br>
 흔히 흑백 손글씨 숫자 이미지(28 * 28 pixels)를 10개의 범주(0에서 9까지)로 분류하는데 이용할 수 있으며, 6만개의 트레이닝 이미지와 1만개의 테스트 이미지로 구성되어 있습니다.
@@ -58,7 +58,7 @@ array([5, 0, 4, ..., 5, 6, 8], dtype=uint8)
 ```python
 # code 2-2 신경망 구조
 from keras import models
-from kerars import layers
+from keras import layers
 
 network = models.Sequential()
 network.add(layers.Dense(512, activation = 'relu', input_shape=(28*28,)))
