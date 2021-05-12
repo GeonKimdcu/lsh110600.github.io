@@ -29,11 +29,13 @@ $ docker-compose version
 1. app project의 루트에서, `docker-compose.yml`이란 이름으로 파일을 생성합니다.
 
 2. 작성 파일에서 먼저 스키마 버전을 정의합니다.
+
 ```yml
 version: "3.7"
 ```
 
 3. 다음으로 애플리케이션의 일부로 실행하려는 서비스 (또는 컨테이너) 목록을 정의합니다.
+
 ```yml
 version: "3.7"
 
@@ -43,7 +45,9 @@ services:
 이제 한 번에 서비스를 작성 파일로 마이그레이션하기 시작합니다.
 
 ## Defining the App Service
+
 아래의 명령어는 앱 컨테이너를 정의하는데 사용했던 것입니다.
+
 ```vim
 $docker run -dp 3000:3000 \
   -w /app -v "$(pwd):/app" \
@@ -57,6 +61,7 @@ $docker run -dp 3000:3000 \
 ```
 
 1. 먼저 컨테이너의 서비스 항목과 이미지를 정의하겠습니다. 우리는 서비스의 이름을 선택할 수 있습니다. 이름은 자동으로 네트워크 별칭이되어 MySQL 서비스를 정의 할 때 유용합니다.
+
 ```yml
 version: "3.7"
 
@@ -65,7 +70,7 @@ services:
     image: node:12-alpine
 ```
 
-2. 일반적으로 image 주문에 대한 요구 사항은 없지만 정의에 가까운 명령이 표시됩니다 . 
+2. 일반적으로 image 주문에 대한 요구 사항은 없지만 정의에 가까운 명령이 표시됩니다.
 
 ```yml
 version: "3.7"
@@ -92,6 +97,7 @@ services:
 4. 다음으로 `working_dir`와 `volumnes` 정의를 사용함으로써 working directory(`w /app`)와 volume mapping(`-v "$(pwd):/app"`)을 마이그레이션 합니다.
 
 Docker Compose 볼륨 정의의 한 가지 장점은 현재 디렉터리의 상대 경로를 사용할 수 있다는 것입니다.
+
 ```yml
 version: "3.7"
 
@@ -107,6 +113,7 @@ services:
 ```
 
 5. 마지막으로 `environment`키를 사용하여 환경 변수 정의를 마이그레이션 해야합니다.
+
 ```yml
 version: "3.7"
 
@@ -192,6 +199,7 @@ volumes:
 ```
 
 최종 완성된 `docker-compose.yml` 모습은 다음과 같아야합니다.
+
 ```yml
 version: "3.7"
 
@@ -221,6 +229,7 @@ services:
 volumes:
   todo-mysql-data:
 ```
+
 ## Running our Application Stack
 이제 `docker-compose.yml` 파일이 있으니 시작해보겠습니다.
 
@@ -232,7 +241,7 @@ volumes:
 $ docker-compose up -d
 ```
 이것을 실행하면 다음과 같은 화면이 출력됩니다.
-```sh
+```vim
 Creating network "app_default" with the default driver
 Creating volume "app_todo-mysql-data" with default driver
 Creating app_app_1   ... done
