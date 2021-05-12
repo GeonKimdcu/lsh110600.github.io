@@ -65,7 +65,8 @@ services:
     image: node:12-alpine
 ```
 
-2.일반적으로 image 주문에 대한 요구 사항은 없지만 정의에 가까운 명령이 표시됩니다 . 자, 계속해서 파일로 옮깁니다.
+2. 일반적으로 image 주문에 대한 요구 사항은 없지만 정의에 가까운 명령이 표시됩니다 . 
+
 ```yml
 version: "3.7"
 
@@ -76,6 +77,7 @@ services:
 ```
 
 3. 서비스에 대한 포트를 정의하여 `-p 3000:3000` 일부를 마이그레이션 하겠습니다.
+
 ```yml
 version: "3.7"
 
@@ -152,6 +154,7 @@ services:
 
 2. 다음으로 volume mapping을 정의합니다. `docker run`으로 컨테이너를 실행했을 때 named volume이 자동으로 생성되었습니다. <br>
 그러나 Compose로 실행할 때는 발생하지 않습니다. `volumes:`라는 최상위 섹션에서 볼륨을 정의한 다음 서비스 구성에서 mountpoint를 지정해야합니다. 단순히 볼륨 이름 만 제공하면 기본 옵션이 사용됩니다. 여기에 더 [많은 옵션](https://docs.docker.com/compose/compose-file/#volume-configuration-reference)을 알아볼 수 있습니다.
+
 ```yml
 version: "3.7"
 
