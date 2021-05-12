@@ -170,7 +170,9 @@ volumes:
   todo-mysql-data:
 ```
 
+
 3. 마지막으로 환경 변수만 지정하면됩니다.
+
 ```yml
 version: "3.7"
 
