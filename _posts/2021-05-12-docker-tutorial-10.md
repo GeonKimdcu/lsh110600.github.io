@@ -1,6 +1,6 @@
 ---
 layout: post
-title: '[Docker] Part 10: What next?'
+title: '[Docker] Part 10: What next'
 subtitle: 'Docker Tutorial'
 categories: devops
 tags: doker
