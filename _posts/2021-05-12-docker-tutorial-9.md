@@ -1,6 +1,6 @@
 ---
 layout: post
-title: '[Docker] Part 9: Image Building Best Practices'
+title: '[Docker] Part 09: Image Building Best Practices'
 subtitle: 'Docker Tutorial'
 categories: devops
 tags: doker

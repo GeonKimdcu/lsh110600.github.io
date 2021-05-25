@@ -1,6 +1,6 @@
 ---
 layout: post
-title: '[Docker] Part 8: Using Docker Compose'
+title: '[Docker] Part 08: Using Docker Compose'
 subtitle: 'Docker Tutorial'
 categories: devops
 tags: doker

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: '[Docker] Part 7: Multi-Container Apps'
+title: '[Docker] Part 07: Multi-Container Apps'
 subtitle: 'Docker Tutorial'
 categories: devops
 tags: doker

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: '[Docker] Part 5: Persisting our DB'
+title: '[Docker] Part 05: Persisting our DB'
 subtitle: 'Docker Tutorial'
 categories: devops
 tags: doker

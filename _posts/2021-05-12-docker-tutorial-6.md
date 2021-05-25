@@ -1,6 +1,6 @@
 ---
 layout: post
-title: '[Docker] Part 6: Using Bind Mounts'
+title: '[Docker] Part 06: Using Bind Mounts'
 subtitle: 'Docker Tutorial'
 categories: devops
 tags: doker
