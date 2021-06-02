@@ -30,7 +30,8 @@ comments: true
  - 특칭 추출기를 사용하여 90% 정확도
  - 세밀하기 튜닝(**fine-tuning**)을 통해 92% 정확도 달성
 
- ### 5.2.1 작은 데이터셋 문제에서 딥러닝의 타당성
+
+### 5.2.1 작은 데이터셋 문제에서 딥러닝의 타당성
  복잡한 문제를 푸는 컨브넷을 수십 개의 샘플만 사용해서 훈련하는 것은 불가능합니다. 하지만 모델이 작고 규제가 잘 되어 있으며 간단한 작업이라면 수백 개의 샘플로도 충분할 수 있습니다. 
 
  컨브넷은 지역적이고 평행 이동으로 변하지 않는 특성을 학습하기 때문에 지각에 관한 문제에서 매우 효율적으로 데이터를 사용합니다.
@@ -39,7 +40,8 @@ comments: true
 
  또한 딥러닝 모델은 태생적으로 매우 다목적입니다. 대규모 데이터셋에서 훈련시킨 이미지 분류 모델이나 speech-to-text 모델을 조금만 변경해서 완전히 다른 문제에 재사용할 수 있습니다. <br>
  
- ### 5.2.2 데이터 내려받기
+### 5.2.2 데이터 내려받기
+
  [원본 데이터셋](https://www.kaggle.com/c/dogs-vs-catsdata)은 캐글에서 다운로드 받을 수 있습니다.
 
  아래 코드를 통해 각 클래스마다 1,000개의 샘플로 이루어진 훈련 세트, 500개 샘플의 검증 세트, 500개 샘플의 테스트 세트로 데이터셋을 만들어줍니다.
@@ -166,6 +168,7 @@ model.add(layers.Dense(1, activation='sigmoid'))
 
 ![img](/assets/img/dlcourse/summary04.png)
 
+
 컴파일 단계에서 RMSprop 옵티마이저를 선택하겠습니다. 네트워크의 마지막이 하나의 시그모이드 유닛이기 때문에 이진 크로스엔트로피(binary crossentropy)를 손실로 사용합니다.
 
 ```python
@@ -178,7 +181,7 @@ model.compile(loss='binary_crossentropy',
 ```
 
 손실 함수 목록을 참고하면 됩니다.
-![img](/assets/img/dlcourse/capture12.png)
+![img](/assets/img/dlcourse/capture12.PNG)
 
 ### 5.2.4 데이터 전처리
 데이터는 네트워크에 주입되기 전에 부동 소수 타입의 텐서로 전처리되어 있어야 합니다. <br>
@@ -287,8 +290,8 @@ plt.legend()
 
 plt.show()
 ```
-![img](/assets/img/dlcourse/accuracy01.png)
-![img](/assets/img/dlcourse/loss01.png)
+![img](/assets/img/dlcourse/accuracy01.PNG)
+![img](/assets/img/dlcourse/loss01.PNG)
 
 위 그래프는 과대적합의 특성을 보여줍니다. <br>
 훈련 정확도가 선형적으로 증가해서 거의 100% 도달하는 반면 검증 정확도는 70~72%에서 정체되었습니다. <br>
@@ -362,7 +365,7 @@ for batch in datagen.flow(x, batch_size=1):
 
 plt.show()
 ```
-![img](/assets/img/dlcourse/capture13.png)
+![img](/assets/img/dlcourse/capture13.PNG)
 
 데이터 증식을 사용하여 새로운 네트워크를 훈련시킬 때 네트워크에 **같은 입력 데이터가 두번 주입되지 않습니다**. 하지만 적은 수의 원본 이미지에서 만들어졌기 때문에 입력 데이터들 사이에 상호 연관성이 큽니다.<br>
 즉 새로운 정보를 만들어 낼 수 없고 단지 기존 정보의 재조합만 가능합니다. <br>
@@ -439,8 +442,8 @@ model.save('cats_and_dogs_small_2.h5')
 훈련 곡선이 검증 곡선에 가깝게 따라가고 있으며 검증 데이터에서 82% 정확도를 달성하였습니다. <br>
 규제하지 않은 모델과 비교했을 때 15% 정도 향상되었습니다.
 
-![img](/assets/img/dlcourse/accuracy02.png)
-![img](/assets/img/dlcourse/loss02.png)
+![img](/assets/img/dlcourse/accuracy02.PNG)
+![img](/assets/img/dlcourse/loss02.PNG)
 
 
 <br><br>
