@@ -1,3 +1,5 @@
+---
+layout: post
 title: '[ArcFault] Project step03: ArcFault Detection'
 subtitle: 'data analysis'
 categories: sideproject
