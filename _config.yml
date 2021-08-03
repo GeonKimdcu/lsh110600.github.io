@@ -133,5 +133,5 @@ sass:
 markdown: kramdown
 highlighter: rouge
 lsi: false
-excerpt_separator: "\n"
+excerpt_separator: "\n\n"
 incremental: false
