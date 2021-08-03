@@ -127,3 +127,11 @@ compress_html:
 
 sass:
   style:             compressed
+
+
+# Math equation
+markdown: kramdown
+highlighter: rouge
+lsi: false
+excerpt_separator: "\n\n"
+incremental: false
